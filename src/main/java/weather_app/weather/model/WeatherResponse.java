@@ -2,7 +2,13 @@ package weather_app.weather.model;
 
 import java.util.List;
 
-public class WeatherRespons {
+public class WeatherResponse {
+    private String name;
+    private Sys sys;
+    private List<Weather> weather;
+    private Main main;
+    private Wind wind;
+
     public String getName() {
         return name;
     }
@@ -43,13 +49,9 @@ public class WeatherRespons {
         this.wind = wind;
     }
 
-    private String name;
-    private Sys sys;
-    private List<Weather> weather;
-    private Main main;
-    private Wind wind;
+    public static class Sys {
+        private String country;
 
-    public static class Sys{
         public String getCountry() {
             return country;
         }
@@ -57,12 +59,12 @@ public class WeatherRespons {
         public void setCountry(String country) {
             this.country = country;
         }
-
-        private String country;
-
     }
 
-    public static class Weather{
+    public static class Weather {
+        private int id;
+        private String description;
+
         public int getId() {
             return id;
         }
@@ -71,29 +73,18 @@ public class WeatherRespons {
             this.id = id;
         }
 
-        public int getDescription() {
+        public String getDescription() {
             return description;
         }
 
-        public void setDescription(int description) {
+        public void setDescription(String description) {
             this.description = description;
         }
-
-        private int id;
-        private int description;
-
     }
 
-    public static class Main{
+    public static class Main {
         private double temp;
-
-        public int getHumidity() {
-            return humidity;
-        }
-
-        public void setHumidity(int humidity) {
-            this.humidity = humidity;
-        }
+        private int humidity;
 
         public double getTemp() {
             return temp;
@@ -103,11 +94,18 @@ public class WeatherRespons {
             this.temp = temp;
         }
 
-        private int humidity;
+        public int getHumidity() {
+            return humidity;
+        }
 
+        public void setHumidity(int humidity) {
+            this.humidity = humidity;
+        }
     }
 
-    public static class Wind{
+    public static class Wind {
+        private double speed;
+
         public double getSpeed() {
             return speed;
         }
@@ -115,8 +113,5 @@ public class WeatherRespons {
         public void setSpeed(double speed) {
             this.speed = speed;
         }
-
-        private double speed;
-
     }
 }
